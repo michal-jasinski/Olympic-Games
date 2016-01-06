@@ -1,0 +1,42 @@
+<div ng-hide="groupChoosen" class="ng-hide">
+    <button type="button" class="btn btn-primary btn-lg" ng-click="choose(1)">
+        Grupa A
+    </button>
+    <br>
+    <button type="button" class="btn btn-primary btn-lg" ng-click="choose(2)">
+        Grupa B
+    </button>
+    <br>
+    <button type="button" class="btn btn-primary btn-lg" ng-click="choose(3)">
+        Grupa C
+    </button>
+    <br>
+    <button type="button" class="btn btn-primary btn-lg" ng-click="choose(4)">
+        Grupa D
+    </button>
+</div>
+
+<div ng-show="groupChoosen" class="ng-hide">
+    <li>Twoja grupa: <span data-ng-bind="group"></span></li>
+    <button ng-click="get()">Refresh</button>
+    <table border="1">
+        <tr ng-repeat="x in data">
+            <td>
+                <h2><span class="label label-primary">{{ x.questionNumber }}</span></h2>
+            </td>
+            <td><span ng-repeat="n in [0,1,2,3]">
+                <div style="white-space:nowrap;">
+                    <span class="badge">{{getLabel(n)}}</span>
+                    <button ng-click="minus(x.questionNumber,n)" type="button" class="btn btn-danger">
+                        -
+                    </button>
+                    <span>{{x.answers[n]}}</span>
+                    <button ng-click="plus(x.questionNumber,n)" type="button" class="btn btn-success">
+                        +
+                    </button>
+                </div>
+                </span>
+        </tr>
+    </table>
+</div>
+
