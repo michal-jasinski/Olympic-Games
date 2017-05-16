@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Favourite_Competitors {
+public class FavouriteCompetitors {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

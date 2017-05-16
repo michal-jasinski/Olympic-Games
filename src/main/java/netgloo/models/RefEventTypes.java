@@ -1,7 +1,7 @@
 package netgloo.models;
 
 
-public class Ref_Event_Types {
+public class RefEventTypes {
 
     private long event_Type_Code;
     private String event_Type_Description;

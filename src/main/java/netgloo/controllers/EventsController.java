@@ -3,9 +3,9 @@ package netgloo.controllers;
 import netgloo.models.Events;
 import netgloo.models.EventsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,8 +22,20 @@ public class EventsController {
 
     @RequestMapping("/get")
     @ResponseBody
-    public List<Events> get() {
+    public List<Events> getAll() {
         return eventsRepository.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    ResponseEntity<?> add(@RequestBody Events events) {
+        eventsRepository.save(events);
+        return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "/{eventId}", method = RequestMethod.DELETE)
+    ResponseEntity<?> delete(@PathVariable long eventId) {
+        eventsRepository.delete(eventId);
+        return ResponseEntity.noContent().build();
     }
 
 }

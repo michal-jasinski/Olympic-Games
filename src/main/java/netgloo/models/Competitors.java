@@ -10,7 +10,7 @@ public class Competitors {
     private long competitor_Id;
     @ManyToOne
     @JoinColumn(name = "gender_Code", nullable = true, updatable = true)
-    private Ref_Gender gender_Code;
+    private RefGender gender_Code;
     private String competitor_First_Name;
     private String competitor_Last_Name;
     private String age;
@@ -18,7 +18,7 @@ public class Competitors {
     private String personal_Coach;
     @ManyToOne
     @JoinColumn(name = "iso_Country_Code", nullable = true, updatable = true)
-    private Ref_Countries iso_Country_Code;
+    private RefCountries iso_Country_Code;
     private String other_Competitor_Details;
 
 
@@ -31,11 +31,11 @@ public class Competitors {
     }
 
 
-    public Ref_Gender getGender_Code() {
+    public RefGender getGender_Code() {
         return gender_Code;
     }
 
-    public void setGender_Code(Ref_Gender gender_Code) {
+    public void setGender_Code(RefGender gender_Code) {
         this.gender_Code = gender_Code;
     }
 
@@ -85,11 +85,11 @@ public class Competitors {
     }
 
 
-    public Ref_Countries getIso_Country_Code() {
+    public RefCountries getIso_Country_Code() {
         return iso_Country_Code;
     }
 
-    public void setIso_Country_Code(Ref_Countries iso_Country_Code) {
+    public void setIso_Country_Code(RefCountries iso_Country_Code) {
         this.iso_Country_Code = iso_Country_Code;
     }
 

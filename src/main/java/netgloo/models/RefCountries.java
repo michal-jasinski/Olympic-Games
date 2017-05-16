@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Ref_Countries {
+public class RefCountries {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long iso_Country_Code;

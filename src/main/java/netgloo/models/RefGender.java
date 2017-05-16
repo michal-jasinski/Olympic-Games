@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Ref_Gender {
+public class RefGender {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long gender_Code;
