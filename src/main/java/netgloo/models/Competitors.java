@@ -1,23 +1,24 @@
 package netgloo.models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Competitors {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long competitor_Id;
-    private long gender_Code;
+    @ManyToOne
+    @JoinColumn(name = "gender_Code", nullable = true, updatable = true)
+    private Ref_Gender gender_Code;
     private String competitor_First_Name;
     private String competitor_Last_Name;
     private String age;
     private String occupation;
     private String personal_Coach;
-    private long iso_Country_Code;
+    @ManyToOne
+    @JoinColumn(name = "iso_Country_Code", nullable = true, updatable = true)
+    private Ref_Countries iso_Country_Code;
     private String other_Competitor_Details;
 
 
@@ -30,11 +31,11 @@ public class Competitors {
     }
 
 
-    public long getGender_Code() {
+    public Ref_Gender getGender_Code() {
         return gender_Code;
     }
 
-    public void setGender_Code(long gender_Code) {
+    public void setGender_Code(Ref_Gender gender_Code) {
         this.gender_Code = gender_Code;
     }
 
@@ -84,11 +85,11 @@ public class Competitors {
     }
 
 
-    public long getIso_Country_Code() {
+    public Ref_Countries getIso_Country_Code() {
         return iso_Country_Code;
     }
 
-    public void setIso_Country_Code(long iso_Country_Code) {
+    public void setIso_Country_Code(Ref_Countries iso_Country_Code) {
         this.iso_Country_Code = iso_Country_Code;
     }
 

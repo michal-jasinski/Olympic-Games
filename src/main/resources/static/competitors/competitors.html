@@ -1,0 +1,28 @@
+<h1>Competitors List.</h1>
+<div class="container">
+    <table class="table table-bordered">
+        <tr>
+            <th>Competitor Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Country</th>
+        </tr>
+        <tr ng-repeat="x in data">
+            <td>
+                <span>{{x.competitor_First_Name}}</span>
+                <span>{{x.competitor_Last_Name}}</span>
+            </td>
+
+            <td>
+                <span>{{x.age}}</span>
+            </td>
+
+            <td>
+                <span>{{x.gender_Code.gender_Description}}</span>
+            </td>
+            <td>
+                <span>{{x.iso_Country_Code.country_Name}}</span>
+            </td>
+        </tr>
+    </table>
+</div>

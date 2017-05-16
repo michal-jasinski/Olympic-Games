@@ -1,9 +1,6 @@
 package netgloo.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Events {
@@ -12,7 +9,9 @@ public class Events {
     private Long event_id;
     private Long event_type_code;
 
-    private Long venue_id;
+    @ManyToOne
+    @JoinColumn(name = "venue_id", nullable = true, updatable = true)
+    private Venues venue_id;
     private String event_name;
     private java.sql.Timestamp event_start_date;
     private java.sql.Timestamp event_end_date;
@@ -33,11 +32,11 @@ public class Events {
         this.event_type_code = event_type_code;
     }
 
-    public Long getVenue_id() {
+    public Venues getVenue_id() {
         return venue_id;
     }
 
-    public void setVenue_id(Long venue_id) {
+    public void setVenue_id(Venues venue_id) {
         this.venue_id = venue_id;
     }
 

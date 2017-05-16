@@ -1,15 +1,8 @@
 'use strict';
 
-angular.module('myApp.view1', ['ngRoute'])
+angular.module('myApp.events', ['ngRoute'])
 
-    .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/view1', {
-            templateUrl: 'view1/view1.html',
-            controller: 'View1Ctrl'
-        });
-    }])
-
-    .controller('View1Ctrl', function ($scope,$http) {
+    .controller('EventsCtrl', function ($scope, $http) {
         $scope.groupChoosen=false;
         $scope.group=0;
         $scope.data;
@@ -21,11 +14,12 @@ angular.module('myApp.view1', ['ngRoute'])
         };
 
         $scope.get = function() {
-            $http.get('http://localhost:8080//get').then(function (dataResponse) {
+            $http.get('http://localhost:8080/events/get').then(function (dataResponse) {
                 console.log(dataResponse);
                 $scope.data = dataResponse.data;
             });
         };
+        $scope.get();
 
         $scope.plus = function(questionNumber,answer) {
             console.log(answer);

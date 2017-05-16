@@ -1,7 +1,14 @@
 package netgloo.models;
 
-public class Ref_Countries {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public class Ref_Countries {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long iso_Country_Code;
     private String country_Name;
 

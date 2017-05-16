@@ -1,7 +1,7 @@
 package netgloo.controllers;
 
-import netgloo.models.Events;
-import netgloo.models.EventsRepository;
+import netgloo.models.Competitors;
+import netgloo.models.CompetitorsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,20 +10,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * A class to test interactions with the MySQL database using the UserDao class.
- *
- * @author netgloo
+ * Created by Michał on 16.05.2017.
  */
 @Controller
-@RequestMapping("/events")
-public class EventsController {
+@RequestMapping("/competitors")
+public class CompetitorsController {
     @Autowired
-    private EventsRepository eventsRepository;
+    private CompetitorsRepository competitorsRepository;
 
     @RequestMapping("/get")
     @ResponseBody
-    public List<Events> get() {
-        return eventsRepository.findAll();
+    public List<Competitors> get() {
+        return competitorsRepository.findAll();
     }
-
 }
+

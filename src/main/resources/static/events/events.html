@@ -1,0 +1,24 @@
+<h1>Events list.</h1>
+<div class="container">
+    <table class="table table-bordered">
+        <tr>
+            <th>Event Name</th>
+            <th>Venue Name</th>
+            <th>Venue Address</th>
+        </tr>
+        <tr ng-repeat="x in data">
+            <td>
+                <span>{{x.event_name}}</span>
+            </td>
+
+            <td>
+                <span>{{x.venue_id.venue_Name}}</span>
+            </td>
+
+            <td>
+                <span>{{x.venue_id.venue_Address}}</span>
+            </td>
+        </tr>
+    </table>
+</div>
+

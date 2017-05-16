@@ -1,8 +1,15 @@
 package netgloo.models;
 
 
-public class Ref_Gender {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public class Ref_Gender {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long gender_Code;
     private String gender_Description;
 
