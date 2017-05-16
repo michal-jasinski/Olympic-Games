@@ -21,7 +21,7 @@ angular.module('myApp.view1', ['ngRoute'])
         };
 
         $scope.get = function() {
-            $http.get('http://87.206.243.32:8080//get?group='+$scope.group).then(function(dataResponse) {
+            $http.get('http://localhost:8080//get').then(function (dataResponse) {
                 console.log(dataResponse);
                 $scope.data = dataResponse.data;
             });
