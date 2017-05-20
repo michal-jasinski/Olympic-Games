@@ -10,11 +10,11 @@ angular.module('myApp', [
 config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         .when('/events', {
-            templateUrl: 'events/events.html',
+            templateUrl: 'events_page/events.html',
             controller: 'EventsCtrl'
         })
         .when('/competitors', {
-            templateUrl: 'competitors/competitors.html',
+            templateUrl: 'competitors_page/competitors.html',
             controller: 'CompetitorsCtrl'
         });
 }]);
