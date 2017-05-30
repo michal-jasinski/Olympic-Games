@@ -1,5 +1,7 @@
-<h1>Competitors List.</h1>
-<div class="container">
+<h1>Competitors List.
+    <a type="button" class="btn btn-default" ng-click="getAll()">Refresh</a>
+</h1>
+<div class="container col-lg-8">
     <table class="table table-bordered">
         <tr>
             <th>Competitor Name</th>
@@ -11,6 +13,9 @@
             <td>
                 <span>{{x.competitor_First_Name}}</span>
                 <span>{{x.competitor_Last_Name}}</span>
+                <button type="button" class="close" aria-label="Close" ng-click="delete(x.competitor_Id)">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </td>
 
             <td>
@@ -18,11 +23,23 @@
             </td>
 
             <td>
-                <span>{{x.gender_Code.gender_Description}}</span>
+                <span>{{x.gender_Code.genderDescription}}</span>
             </td>
             <td>
-                <span>{{x.iso_Country_Code.country_Name}}</span>
+                <span>{{x.iso_Country_Code.countryName}}</span>
             </td>
         </tr>
     </table>
 </div>
+
+<div class="container col-lg-4">
+    <input type="text" class="form-control" placeholder="Name" ng-model="competitor.name">
+    <input type="number" class="form-control" placeholder="Age" ng-model="competitor.age">
+    <input type="text" class="form-control" placeholder="Gender" ng-model="competitor.gender">
+    <input type="text" class="form-control" placeholder="Country" ng-model="competitor.country">
+    <a type="button" class="btn btn-default" ng-click="send()">Add</a>
+
+
+</div>
+
+

@@ -1,7 +1,6 @@
 package netgloo.controllers;
 
-import netgloo.models.Events;
-import netgloo.models.EventsRepository;
+import netgloo.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,15 +18,21 @@ import java.util.List;
 public class EventsController {
     @Autowired
     private EventsRepository eventsRepository;
+    @Autowired
+    private VenuesRepository venuesRepository;
 
-    @RequestMapping("/get")
+    @RequestMapping("/getAll")
     @ResponseBody
     public List<Events> getAll() {
         return eventsRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    ResponseEntity<?> add(@RequestBody Events events) {
+    ResponseEntity<?> add(@RequestBody EventDTO eventDTO) {
+        Events events = new Events();
+        events.setEvent_name(eventDTO.getName());
+        Venues venues = venuesRepository.findOne(Long.valueOf(eventDTO.getVenueId()));
+        events.setVenue_id(venues);
         eventsRepository.save(events);
         return ResponseEntity.noContent().build();
     }

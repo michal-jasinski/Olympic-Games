@@ -1,17 +1,15 @@
 package netgloo.models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class RefGender {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long gender_Code;
-    private String gender_Description;
+    @Column(name = "gender_Description")
+    private String genderDescription;
 
 
     public long getGender_Code() {
@@ -23,12 +21,12 @@ public class RefGender {
     }
 
 
-    public String getGender_Description() {
-        return gender_Description;
+    public String getGenderDescription() {
+        return genderDescription;
     }
 
-    public void setGender_Description(String gender_Description) {
-        this.gender_Description = gender_Description;
+    public void setGenderDescription(String genderDescription) {
+        this.genderDescription = genderDescription;
     }
 
 }

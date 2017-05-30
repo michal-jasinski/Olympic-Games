@@ -1,7 +1,6 @@
 package netgloo.controllers;
 
-import netgloo.models.Competitors;
-import netgloo.models.CompetitorsRepository;
+import netgloo.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,6 +16,10 @@ import java.util.List;
 public class CompetitorsController {
     @Autowired
     private CompetitorsRepository competitorsRepository;
+    @Autowired
+    private RefCountriesRepository refCountriesRepository;
+    @Autowired
+    private RefGenderRepository refGenderRepository;
 
     @RequestMapping("/getAll")
     @ResponseBody
@@ -25,7 +28,14 @@ public class CompetitorsController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    ResponseEntity<?> add(@RequestBody Competitors competitors) {
+    ResponseEntity<?> add(@RequestBody CompetitorDTO competitorDTO) {
+        Competitors competitors = new Competitors();
+        competitors.setCompetitor_First_Name(competitorDTO.getName());
+        competitors.setAge(String.valueOf(competitorDTO.getAge()));
+        RefGender gender = refGenderRepository.findByGenderDescription(competitorDTO.getGender());
+        competitors.setGender_Code(gender);
+        RefCountries countries = refCountriesRepository.findByCountryName(competitorDTO.getCountry());
+        competitors.setIso_Country_Code(countries);
         competitorsRepository.save(competitors);
         return ResponseEntity.noContent().build();
     }

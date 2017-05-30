@@ -1,16 +1,15 @@
 package netgloo.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class RefCountries {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long iso_Country_Code;
-    private String country_Name;
+    @Column(name = "country_Name")
+    private String countryName;
+
 
 
     public long getIso_Country_Code() {
@@ -22,12 +21,12 @@ public class RefCountries {
     }
 
 
-    public String getCountry_Name() {
-        return country_Name;
+    public String getCountryName() {
+        return countryName;
     }
 
-    public void setCountry_Name(String country_Name) {
-        this.country_Name = country_Name;
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
     }
 
 }

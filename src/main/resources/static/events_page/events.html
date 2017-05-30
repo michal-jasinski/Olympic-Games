@@ -1,5 +1,7 @@
-<h1>Events list.</h1>
-<div class="container">
+<h1>Events list.
+    <a type="button" class="btn btn-default" ng-click="getAll()">Refresh</a>
+</h1>
+<div class="container col-lg-8">
     <table class="table table-bordered">
         <tr>
             <th>Event Name</th>
@@ -9,6 +11,9 @@
         <tr ng-repeat="x in data">
             <td>
                 <span>{{x.event_name}}</span>
+                <button type="button" class="close" aria-label="Close" ng-click="delete(x.event_id)">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </td>
 
             <td>
@@ -22,3 +27,12 @@
     </table>
 </div>
 
+<div class="container col-lg-4">
+    <input type="text" class="form-control" placeholder="Name" ng-model="event.name">
+    <select ng-model="event.venueId"
+            ng-options="item.venue_Id as item.venue_Name for item in venues">
+        <option value="">Select Venue</option>
+    </select>
+    <a type="button" class="btn btn-default" ng-click="send()">Add</a>
+
+</div>

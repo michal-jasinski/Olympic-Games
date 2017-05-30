@@ -6,6 +6,11 @@ angular.module('myApp.events', ['ngRoute'])
         $scope.groupChoosen=false;
         $scope.group=0;
         $scope.data;
+        $scope.event = {
+            name: "",
+            venueId: 0
+        };
+        $scope.venues;
 
         $scope.getAll = function () {
             $http.get('http://localhost:8080/events/getAll').then(function (dataResponse) {
@@ -14,4 +19,31 @@ angular.module('myApp.events', ['ngRoute'])
             });
         };
         $scope.getAll();
+
+        $scope.send = function () {
+            $http({
+                url: 'http://localhost:8080/events/',
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                data: $scope.event
+            });
+            $scope.getAll();
+
+        };
+
+        $scope.getAllVenues = function () {
+            $http.get('http://localhost:8080/venues/getAll').then(function (dataResponse) {
+                console.log(dataResponse);
+                $scope.venues = dataResponse.data;
+            });
+        };
+        $scope.getAllVenues();
+
+        $scope.delete = function (id) {
+            $http({
+                url: 'http://localhost:8080/events/' + id,
+                method: 'DELETE'
+            });
+            $scope.getAll();
+        };
     });
